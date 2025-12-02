@@ -41,8 +41,8 @@ Search across the web, financial data, academic papers, and proprietary sources 
 
 To authenticate with Valyu, you need to configure:
 
-1. **API URL**: `https://api.valyu.network` (default)
-2. **API Key**: Get your API key from the [Valyu Platform](https://platform.valyu.network/) + $10 in free credits!
+1. **API URL**: `https://api.valyu.ai` (default)
+2. **API Key**: Get your API key from the [Valyu Platform](https://platform.valyu.ai/) + $10 in free credits!
 
 ## Usage Examples
 
@@ -147,10 +147,10 @@ Query: "machine learning drug discovery pharmaceutical research breakthroughs"
 
 ## Resources
 
-* [Valyu API Documentation](https://docs.valyu.network/)
-* [Valyu Platform](https://platform.valyu.network/)
-* [Financial Search Guide](https://docs.valyu.network/finance)
-* [Academic Search Guide](https://docs.valyu.network/academic)
+* [Valyu API Documentation](https://docs.valyu.ai/)
+* [Valyu Platform](https://platform.valyu.ai/)
+* [Financial Search Guide](https://docs.valyu.ai/finance)
+* [Academic Search Guide](https://docs.valyu.ai/academic)
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 
 ## Version History
