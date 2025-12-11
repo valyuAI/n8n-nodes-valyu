@@ -1,9 +1,15 @@
 {
   "name": "n8n-nodes-valyu",
-  "version": "0.1.2",
-  "description": "An n8n node for Valyu - the world's first purpose-built search API for AIs.",
+  "version": "0.2.0",
+  "description": "n8n node for Valyu - Search, Extract, Answer, and Deep Research APIs for AI applications.",
   "keywords": [
-    "n8n-community-node-package", "valyu", "search", "rag"
+    "n8n-community-node-package",
+    "valyu",
+    "search",
+    "rag",
+    "ai",
+    "extraction",
+    "deep-research"
   ],
   "license": "MIT",
   "homepage": "https://valyu.network",
@@ -49,5 +55,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "valyu-js": "^2.2.3"
   }
 }
