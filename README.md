@@ -2,161 +2,61 @@
 
 # n8n-nodes-valyu
 
-This is an n8n community node. It lets you use Valyu in your n8n workflows.
-
-Valyu is the world's first purpose-built search API for AI agents, providing access to web content, structured financial data, academic research, and proprietary datasets through a unified search API.
-
-[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
-
-[Installation](#installation)  
-[Operations](#operations)  
-[Credentials](#credentials)  
-[Usage Examples](#usage-examples)  
-[Compatibility](#compatibility)  
-[Resources](#resources)  
-[Version history](#version-history)
+Use [Valyu](https://valyu.ai)'s AI-powered search, extraction, and research tools in your n8n workflows.
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+1. In n8n, go to **Settings** → **Community Nodes**
+2. Click **Install**
+3. Enter: `n8n-nodes-valyu`
+4. Click **Install**
 
-You can install this community node by name: `n8n-nodes-valyu`
+> **Note:** Community nodes are only available on self-hosted n8n instances.
+
+## Setup
+
+1. Get your API key from [platform.valyu.ai](https://platform.valyu.ai) (includes $10 free credits)
+2. In n8n, add a Valyu node to your workflow
+3. Create new credentials with your API key
 
 ## Operations
 
-### Deepsearch
-Search across the web, financial data, academic papers, and proprietary sources with intelligent result ranking and transparent pricing.
+### Search
+Find information across web and premium data sources (academic papers, financial data, news).
 
-**Key Parameters:**
-- **Query**: Your search query
-- **Search Type**: Choose from `all`, `web`, or `proprietary` sources
-- **Max Results**: Limit results (1-50)
-- **Max Price (CPM)**: Control cost per thousand retrievals
-- **Relevance Threshold**: Filter result quality (0-1)
-- **Response Length**: Choose from `short`, `medium`, `large`, or `max`
-- **Included/Excluded Sources**: Specify data sources
-- **Date Range**: Filter by publication date
+**When to use:** Research, fact-checking, finding information on any topic.
 
-## Credentials
+### Extraction
+Pull clean content from URLs with optional AI summarization or structured data extraction.
 
-To authenticate with Valyu, you need to configure:
+**When to use:** Scraping websites, getting article content, extracting specific data points.
 
-1. **API URL**: `https://api.valyu.ai` (default)
-2. **API Key**: Get your API key from the [Valyu Platform](https://platform.valyu.ai/) + $10 in free credits!
+### Answer
+Get instant AI answers to questions, backed by real search results.
 
-## Usage Examples
+**When to use:** Quick Q&A, chatbots, automated responses.
 
-### 📈 Financial Research
+### Deep Research
+Run comprehensive research tasks that generate detailed reports (5-30 minutes).
 
-**Stock Analysis:**
-```
-Query: "Apple MD&A 10-k 2008"
-```
+**When to use:** Market research, competitive analysis, in-depth reports.
 
-**Market Intelligence:**
-```
-Query: "cryptocurrency regulatory developments 2024 impact on Bitcoin price"
-```
+## Links
 
-**Risk Assessment:**
-```
-Query: "insider trading patterns technology stocks regulatory compliance"
-```
-
-### 🎓 Academic Research
-
-**Computer Science:**
-```
-Query: "large language models reasoning capabilities benchmarks 2024"
-```
-
-**Medical Research:**
-```
-Query: "CRISPR gene editing clinical trials cancer treatment outcomes"
-```
-
-**Environmental Science:**
-```
-Query: "climate change impact renewable energy adoption policies"
-```
-
-### 📰 News & Current Events
-
-**Technology News:**
-```
-Query: "artificial intelligence regulation European Union AI Act implementation"
-```
-
-**Market News:**
-```
-Query: "Federal Reserve interest rate decision market reaction analysis"
-```
-
-### 💼 Business Intelligence
-
-**Industry Analysis:**
-```
-Query: "SaaS market trends subscription model pricing strategies 2024"
-```
-
-**Competitive Research:**
-```
-Query: "cloud computing providers market share AWS Microsoft Google"
-```
-
-### 🔬 Research & Development
-
-**Patent Research:**
-```
-Query: "quantum computing quantum error correction patent applications"
-```
-
-**Scientific Literature:**
-```
-Query: "machine learning drug discovery pharmaceutical research breakthroughs"
-```
-
-## Advanced Usage Tips
-
-### Optimizing Search Results
-
-1. **Use Specific Keywords**: Include technical terms, company names, or specific methodologies
-2. **Set Relevance Thresholds**: Use higher thresholds (0.7-0.9) for focused research
-3. **Control Costs**: Set appropriate max_price limits for your use case
-4. **Date Filtering**: Use start_date/end_date for recent developments
-5. **Source Selection**: Specify included_sources for targeted searches
-
-### Search Type Guidelines
-
-- **`all`**: Best for comprehensive research across all available sources
-- **`web`**: Use for current events, news, and real-time information
-- **`proprietary`**: Focus on academic papers, research, and exclusive content
-
-### Response Length Options
-
-- **`short`**: Quick summaries and key points
-- **`medium`**: Balanced detail for most use cases
-- **`large`**: Comprehensive analysis and context
-- **`max`**: Full detailed responses with extensive context
-
-## Compatibility
-
-- **Minimum n8n version**: 0.198.0
-- **Tested with**: n8n 1.x
-- **Node.js**: >= 18.0.0
-
-## Resources
-
-* [Valyu API Documentation](https://docs.valyu.ai/)
-* [Valyu Platform](https://platform.valyu.ai/)
-* [Financial Search Guide](https://docs.valyu.ai/finance)
-* [Academic Search Guide](https://docs.valyu.ai/academic)
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [Documentation](https://docs.valyu.ai/integrations/n8n)
+- [Valyu Platform](https://platform.valyu.ai)
+- [GitHub](https://github.com/valyu-network/n8n-nodes-valyu)
+- [npm](https://www.npmjs.com/package/n8n-nodes-valyu)
 
 ## Version History
 
+### 0.2.0
+- Renamed Deepsearch → Search
+- Renamed Contents → Extraction
+- Added Answer operation
+- Added Deep Research operation
+- Migrated to official Valyu SDK
+- Moved parameters to expandable Options sections
+
 ### 0.1.0
-- Initial release
-- Deepsearch operation support
-- Financial data, academic research, and web search capabilities
-- Configurable API URL and authentication
+- Initial release with Deepsearch and Contents operations
