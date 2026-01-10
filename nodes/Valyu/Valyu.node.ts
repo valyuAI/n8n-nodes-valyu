@@ -3,7 +3,6 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
-	NodeConnectionType,
 	NodeApiError,
 	INodeProperties,
 } from 'n8n-workflow';
@@ -317,8 +316,8 @@ export class Valyu implements INodeType {
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Search, Extract, Answer, and Deep Research with Valyu AI',
 		defaults: { name: 'Valyu' },
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ['main'],
+		outputs: ['main'],
 		credentials: [{ name: 'valyuApi', required: true }],
 		properties: [
 			// ============ OPERATION SELECTOR ============
@@ -338,13 +337,13 @@ export class Valyu implements INodeType {
 						name: 'Extraction',
 						value: 'extraction',
 						description: 'Extract and summarize content from URLs',
-						action: 'Extract content from URLs',
+						action: 'Extract content from urls',
 					},
 					{
 						name: 'Answer',
 						value: 'answer',
 						description: 'Get a fast AI answer grounded in search results',
-						action: 'Get AI-powered answer',
+						action: 'Get ai powered answer',
 					},
 					{
 						name: 'Deep Research',
@@ -488,8 +487,8 @@ export class Valyu implements INodeType {
 				name: 'researchMode',
 				type: 'options',
 				options: [
-					{ name: 'Lite (5-10 min)', value: 'lite', description: 'Quick research, fact-checking, straightforward questions' },
-					{ name: 'Heavy (15-30 min)', value: 'heavy', description: 'Complex analysis, multi-faceted topics, detailed reports' },
+					{ name: 'Lite (5-10 Min)', value: 'lite', description: 'Quick research, fact-checking, straightforward questions' },
+					{ name: 'Heavy (15-30 Min)', value: 'heavy', description: 'Complex analysis, multi-faceted topics, detailed reports' },
 				],
 				default: 'lite',
 				description: 'Research depth and duration',
@@ -662,7 +661,9 @@ export class Valyu implements INodeType {
 					const taskResult = await valyu.deepresearch.create(createParams);
 
 					if (!taskResult.success || !taskResult.deepresearch_id) {
-						throw new Error(taskResult.error || 'Failed to create deep research task');
+						throw new NodeApiError(this.getNode(), {
+							message: taskResult.error || 'Failed to create deep research task',
+						});
 					}
 
 					const waitForCompletion = options.waitForCompletion !== false; // Default true
