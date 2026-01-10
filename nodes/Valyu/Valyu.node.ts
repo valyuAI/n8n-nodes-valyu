@@ -1,3 +1,4 @@
+import type { NodeConnectionType } from 'n8n-workflow';
 import {
 	IExecuteFunctions,
 	INodeExecutionData,
@@ -316,8 +317,8 @@ export class Valyu implements INodeType {
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Search, Extract, Answer, and Deep Research with Valyu AI',
 		defaults: { name: 'Valyu' },
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: ['main' as NodeConnectionType],
+		outputs: ['main' as NodeConnectionType],
 		credentials: [{ name: 'valyuApi', required: true }],
 		properties: [
 			// ============ OPERATION SELECTOR ============
