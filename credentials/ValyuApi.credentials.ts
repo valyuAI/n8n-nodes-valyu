@@ -12,7 +12,7 @@ export class ValyuApi implements ICredentialType {
 			displayName: 'API URL',
 			name: 'apiUrl',
 			type: 'string',
-			default: 'https://api.valyu.network',
+			default: 'https://api.valyu.ai/v1',
 			required: true,
 		},
 		{
