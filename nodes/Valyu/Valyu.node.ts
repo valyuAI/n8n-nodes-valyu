@@ -488,10 +488,12 @@ export class Valyu implements INodeType {
 				name: 'researchMode',
 				type: 'options',
 				options: [
-					{ name: 'Lite (5-10 Min)', value: 'lite', description: 'Quick research, fact-checking, straightforward questions' },
+					{ name: 'Fast (5-10 Min)', value: 'fast', description: 'Quick research, fact-checking, straightforward questions' },
+					{ name: 'Standard (10-15 Min)', value: 'standard', description: 'Balanced research depth for most tasks' },
 					{ name: 'Heavy (15-30 Min)', value: 'heavy', description: 'Complex analysis, multi-faceted topics, detailed reports' },
+					{ name: 'Max (30-60 Min)', value: 'max', description: 'Maximum depth research with extended analysis and fact verification' },
 				],
-				default: 'lite',
+				default: 'fast',
 				description: 'Research depth and duration',
 				displayOptions: { show: { operation: ['deepresearch'] } },
 			},
@@ -633,7 +635,7 @@ export class Valyu implements INodeType {
 				// ============ DEEP RESEARCH ============
 				if (operation === 'deepresearch') {
 					const input = this.getNodeParameter('researchQuery', i) as string;
-					const model = this.getNodeParameter('researchMode', i) as 'lite' | 'heavy';
+					const model = this.getNodeParameter('researchMode', i) as 'fast' | 'standard' | 'heavy' | 'max';
 					const options = this.getNodeParameter('deepResearchOptions', i, {}) as Record<string, any>;
 
 					const createParams: DeepResearchCreateOptions = {
@@ -671,8 +673,8 @@ export class Valyu implements INodeType {
 
 					if (waitForCompletion) {
 						// Wait for completion using SDK polling
-						const pollInterval = model === 'lite' ? 5000 : 15000;
-						const maxWaitTime = model === 'lite' ? 900000 : 2700000; // 15min for lite, 45min for heavy
+						const pollInterval = model === 'fast' ? 5000 : model === 'max' ? 30000 : 15000;
+						const maxWaitTime = model === 'fast' ? 900000 : model === 'max' ? 5400000 : 2700000;
 
 						const completedResult = await valyu.deepresearch.wait(taskResult.deepresearch_id, {
 							pollInterval,
