@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-valyu",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "n8n node for Valyu - Search, Extract, Answer, and Deep Research APIs for AI applications.",
   "keywords": [
     "n8n-community-node-package",
@@ -57,6 +57,6 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
-    "valyu-js": "^2.5.3"
+    "valyu-js": "^2.7.6"
   }
 }
